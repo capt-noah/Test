@@ -2,11 +2,15 @@
   "name": "test",
   "private": true,
   "version": "0.0.0",
+  "engines": {
+    "node": ">=22.21.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.16",
@@ -35,5 +39,13 @@
   "main": "eslint.config.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capt-noah/Test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/capt-noah/Test/issues"
+  },
+  "homepage": "https://github.com/capt-noah/Test#readme"
 }
