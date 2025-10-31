@@ -16,13 +16,7 @@ function Login() {
         setPass('')
         setLoading(true)
 
-        const response = await fetch('http://localhost:3000/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({username: user, password: pass})
-        })
+        const response = await fetch('https://lidetainnovation.gov.et/api/login')
 
         const data = await response.json()
 

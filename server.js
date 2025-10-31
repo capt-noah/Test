@@ -1,11 +1,14 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const path = require('path')
 const db = require('./db.js')
 require('dotenv').config()
 
 app.use(express.json())
 app.use(cors())
+
+app.use(express.static(path.join(__dirname, './dist')))
 
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
@@ -18,7 +21,7 @@ app.post('/api/login', async (req, res) => {
 })
 
 app.get('/', (req, res) => {
-    res.send('test')
+    res.sendFile(path.join(__dirname, './dist', 'index.html'))
 })
 
 app.listen(process.env.SERVER_PORT, () => console.log('listening...'))
