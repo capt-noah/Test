@@ -9,6 +9,7 @@ const pool = mysql.createConnection({
     port: process.env.DB_PORT,
 })
 
+
 const db = pool.promise()
 
 module.exports = db
