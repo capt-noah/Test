@@ -28,4 +28,4 @@ app.get('/test', (req, res) => {
     res.send('Testing The Server')
 })
 
-app.listen(process.env.SERVER_PORT, () => console.log('listening...'))
+app.listen(process.env.SERVER_PORT || 3000, () => console.log('listening...'))
