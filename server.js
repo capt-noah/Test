@@ -8,7 +8,7 @@ require('dotenv').config()
 app.use(express.json())
 app.use(cors())
 
-app.use(express.static(path.join(__dirname, './dist')))
+// app.use(express.static(path.join(__dirname, './dist')))
 
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
@@ -20,8 +20,12 @@ app.post('/api/login', async (req, res) => {
 
 })
 
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, './dist', 'index.html'))
+// })
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './dist', 'index.html'))
+    res.send('Testing The Server')
 })
 
 app.listen(process.env.SERVER_PORT, () => console.log('listening...'))
