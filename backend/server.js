@@ -14,8 +14,8 @@ console.log('connecting...')
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: '127.0.0.1',
-    host: '3306',
+    host: 'localhost',
+    port: 3306,
     user: 'lideta',
     database: 'lideta_db',
     password: 'vuV2hM3hGan7!k#v',
