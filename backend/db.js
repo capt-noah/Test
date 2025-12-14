@@ -3,7 +3,7 @@ require('dotenv').config()
 
 const pool = mysql.createConnection({
     host: 'mysql-db02.remote',
-    port: '32636',
+    port: 32636,
     user: 'lideta',
     database: 'lideta_db',
     password: '$b3V296wi',
