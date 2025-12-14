@@ -1,7 +1,8 @@
-const mysql = require('mysql2')
+const mysql = require('mysql')
 require('dotenv').config()
 
-const pool = mysql.createConnection({
+const pool = mysql.createPool({
+    connectionLimit: 10,
     host: 'localhost',
     user: 'lideta',
     database: 'lideta_db',
