@@ -1,9 +1,22 @@
-const express = require('express')
+// const express = require('express')
+import express from 'express'
 const app = express()
-const cors = require('cors')
-const path = require('path')
-const mysql = require('mysql2')
-require('dotenv').config()
+import cors from 'cors'
+import path from 'path'
+import dotenv from 'dotenv'
+dotenv.config()
+// const cors = require('cors')
+// const path = require('path')
+// const mysql = require('mysql2')
+// require('dotenv').config()
+
+import pool from './db.js'
+
+import { fileURLToPath } from 'url'
+
+// Convert ES module URL to __dirname
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 app.use(express.json())
 app.use(cors())
@@ -12,24 +25,24 @@ app.use(express.static(path.join(__dirname, '../frontend/dist')))
 
 console.log('connecting...')
 
-const pool = mysql.createPool({
-    connectionLimit: 10,
-    host: 'localhost',
-    port: 3306,
-    user: 'lideta',
-    database: 'lideta_db',
-    password: 'vuV2hM3hGan7!k#v',
-})
+// const pool = mysql.createPool({
+//     connectionLimit: 10,
+//     host: 'localhost',
+//     port: 3306,
+//     user: 'lideta',
+//     database: 'lideta_db',
+//     password: 'vuV2hM3hGan7!k#v',
+// })
 
-pool.getConnection((error, con) => {
-    if (error) {
-        console.log('not connected')
-        console.log(error)
-        return
-    }
+// pool.getConnection((error, con) => {
+//     if (error) {
+//         console.log('not connected')
+//         console.log(error)
+//         return
+//     }
 
-    console.log('connected')
-})
+//     console.log('connected')
+// })
 
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
@@ -45,8 +58,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'))
 })
 
-app.get('/test', (req, res) => {
-    res.send('Testing The Server')
+app.get('/test', async(req, res) => {
+    const response = await pool`SELECT * FROM complaints`
+
+    res.json(response)
 })
 
-app.listen(process.env.SERVER_PORT || 3000, () => console.log('listening...'))
+app.listen( 3000, () => console.log('listening...'))
