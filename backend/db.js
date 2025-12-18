@@ -17,6 +17,6 @@ import postgres from 'postgres'
 
 // module.exports = db
 
-const pool = postgres(process.env.DATABASE_URL, { ssl: 'require' })
+const pool = postgres('postgresql://postgres.phmrqghudmszhszjryix:orA2MnvUWApaco5k@aws-1-eu-west-1.pooler.supabase.com:6543/postgres', { ssl: 'require' })
 
 export default pool

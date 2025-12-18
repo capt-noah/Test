@@ -58,10 +58,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'))
 })
 
-app.get('/test', async(req, res) => {
-    const response = await pool`SELECT * FROM complaints`
+app.get('/test', async (req, res) => {
+    
+    try {
+        const response = await pool`SELECT * FROM complaints`
 
-    res.json(response)
+        res.json(response)
+    }
+    catch (e) {
+        console.log('mtsm')
+        res.json(e)
+    }
+
 })
 
 app.listen( 3000, () => console.log('listening...'))
